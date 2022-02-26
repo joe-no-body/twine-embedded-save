@@ -1,0 +1,36 @@
+::StoryTitle
+
+Untitled
+
+::StoryData
+{
+    "ifid": "E3BAA240-FAC2-4782-8DE2-47AB52353944",
+    "format": "SugarCube",
+    "format-version": "2.35.0",
+    "start": "Start"
+}
+
+::StoryInit
+
+
+::PassageHeader
+
+
+::StoryCaption
+
+
+::Start
+
+Enter your name: <<textbox "$playerName" "world" "Greeting" autofocus>>
+
+[[Continue|Greeting]]
+
+::Greeting
+
+Hello $playerName.
+
+[[Change Name|Start]]
+
+<<button "Save Game">>
+  <<run downloadPageHtml()>>
+<</button>>
