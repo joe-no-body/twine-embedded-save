@@ -1,8 +1,8 @@
-::StoryTitle
+:: StoryTitle
 
 Untitled
 
-::StoryData
+:: StoryData
 {
     "ifid": "E3BAA240-FAC2-4782-8DE2-47AB52353944",
     "format": "SugarCube",
@@ -10,27 +10,36 @@ Untitled
     "start": "Start"
 }
 
-::StoryInit
+:: StoryInit
+
+<<run loadSaveDataFromElement()>>
+
+:: PassageHeader
 
 
-::PassageHeader
+:: StoryCaption
 
 
-::StoryCaption
-
-
-::Start
+:: Start
 
 Enter your name: <<textbox "$playerName" "world" "Greeting" autofocus>>
 
 [[Continue|Greeting]]
 
-::Greeting
+:: Greeting
 
 Hello $playerName.
 
 [[Change Name|Start]]
 
 <<button "Save Game">>
+  <<run persistSaveData()>>
   <<run downloadPageHtml()>>
 <</button>>
+
+<<button "Display save data">>
+  <<set _saveData = getSaveData()>>
+  <<replace "#saveData">>_saveData<</replace>>
+<</button>>
+
+<div id="saveData"></div>

@@ -38,3 +38,42 @@ window.downloadPageHtml = function() {
   return downloadFile(pageHtml);
 }
 
+window.getSaveData = function() {
+  return Save.serialize();
+}
+
+window.getSaveDataElement = function() {
+  return document.querySelector('tw-passagedata[name="StorySaveData"]');
+}
+
+window.createSaveDataElement = function(saveData) {
+  let e = getSaveDataElement();
+  if (!e) {
+    e = document.createElement("tw-passagedata");
+    e.setAttribute("pid", "4294967295");
+    e.setAttribute("name", "StorySaveData");
+    e.setAttribute("tags", "");
+    e.setAttribute("position", "0,0");
+    e.setAttribute("size", "0,0");
+  }
+
+  e.innerText = saveData;
+
+  let parent = document.querySelector("tw-storydata");
+  parent.appendChild(e);
+}
+
+window.persistSaveData = function() {
+  window.createSaveDataElement(window.getSaveData());
+}
+
+window.loadSaveDataFromElement = function() {
+  let e = window.getSaveDataElement();
+  if (!e) {
+    console.log("No embedded save data to load");
+    return;
+  }
+  let data = e.innerText;
+  console.log("Loading save data embedded in page");
+  Save.deserialize(data);
+}
