@@ -36,10 +36,3 @@ Hello $playerName.
   <<run persistSaveData()>>
   <<run downloadPageHtml()>>
 <</button>>
-
-<<button "Display save data">>
-  <<set _saveData = getSaveData()>>
-  <<replace "#saveData">>_saveData<</replace>>
-<</button>>
-
-<div id="saveData"></div>
