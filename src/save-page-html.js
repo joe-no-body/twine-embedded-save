@@ -53,7 +53,7 @@ window.createSaveDataElement = function(saveData) {
     e.setAttribute("pid", "4294967295");
     e.setAttribute("name", "StorySaveData");
     e.setAttribute("tags", "");
-    e.setAttribute("position", "0,0");
+    e.setAttribute("position", "9999999,9999999");
     e.setAttribute("size", "0,0");
   }
 
