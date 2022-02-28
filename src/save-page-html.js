@@ -1,4 +1,5 @@
 const GAME_FILENAME = 'save-in-html.html';
+const SAVE_DATA_PASSAGE = 'StorySaveData';
 
 window.getPageHtml = function() {
   return window.document.documentElement.outerHTML;
@@ -43,7 +44,7 @@ window.getSaveData = function() {
 }
 
 window.getSaveDataElement = function() {
-  return document.querySelector('tw-passagedata[name="StorySaveData"]');
+  return document.querySelector(`tw-passagedata[name="${SAVE_DATA_PASSAGE}"]`);
 }
 
 window.createSaveDataElement = function(saveData) {
@@ -51,7 +52,7 @@ window.createSaveDataElement = function(saveData) {
   if (!e) {
     e = document.createElement("tw-passagedata");
     e.setAttribute("pid", "4294967295");
-    e.setAttribute("name", "StorySaveData");
+    e.setAttribute("name", SAVE_DATA_PASSAGE);
     e.setAttribute("tags", "");
     e.setAttribute("position", "9999999,9999999");
     e.setAttribute("size", "0,0");
